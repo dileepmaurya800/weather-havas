@@ -1,0 +1,10 @@
+.bg-right-box {
+  background: #013756 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+.bg-left-box{
+  height: 100vh;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+opacity: 1;
+}
+
