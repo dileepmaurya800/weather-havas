@@ -1,15 +1,59 @@
-import React from "react";
-import SearchBar from "./SearchBar";
+import React, { useState } from "react";
+// import SearchBar from "./SearchBar";
 import "./style.css";
 
-const LeftBar = ({ data }) => {
+const LeftBar = ({ data, setSearchedCity }) => {
+  const [searchValue, setSearchValue] = useState("");
+
+ 
+  const handleInputChange = (event) => {
+    setSearchValue(event.target.value);
+    // setSearchedCity(event.target.value) 
+  };
+
+  const handleSearch = () => {
+    setSearchedCity(searchValue)
+    console.log("Search value:", searchValue);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch(); 
+    }
+  };
+
 
 const weatherData = data?.data?.length > 0 ? data?.data[0] : null;
 
   return (
     <>
       <div className="col-md-4 bg-left-box ">
-        <SearchBar />
+      <div className="container">
+        <div className="row justify-content-center my-4">
+          <div className="input-group mb-3  search-box">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search city"
+              aria-label="Search city"
+              aria-describedby="button-addon2"
+              value={searchValue} 
+              onChange={handleInputChange}
+              onKeyDown={handleKeyPress}
+            />
+
+            <button
+              className="btn btn-outline-secondary border-0"
+              type="button"
+              id="button-addon2"
+              onClick={handleSearch} 
+            >
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+        {/* <SearchBar setSearchedCity={setSearchedCity} searchedCity={searchedCity} /> */}
         <div className="row my-5 justify-content-center text-center ">
           <div className=" w-50 border-0">
             <i

@@ -3,7 +3,7 @@ import DateTab from "./DateTab";
 
 const RightBar = ({data}) => {
 
-    console.log(data,"tttt")
+    // console.log(data,"tttt")
   return (
     <>
     <div className="col-md-8 bg-right-box">

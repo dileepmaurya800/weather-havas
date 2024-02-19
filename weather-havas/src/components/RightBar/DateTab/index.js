@@ -1,53 +1,44 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState, lazy, Suspense, useEffect } from "react";
 import "./style.css";
 const DataCard = lazy(() => import("../DataCard"));
 
 const DateTab = ({ data }) => {
   const [activeTab, setActiveTab] = useState(0);
+  const [weatherData, setWeatherData] = useState();
 
-  console.log(data.data);
-
-  const dates = ["Today", "Tue 7th Feb", "Wed 8th Feb", "Thu 9th Feb"];
-
-  const handleTabClick = (index) => {
-    setActiveTab(index);
+  const handleTabClick = (item) => {
+    setActiveTab(item.index);
+    setWeatherData(item.date);
   };
+
+  useEffect(() => {
+    setActiveTab(0);
+
+    if (data?.data?.length > 0) {
+      setWeatherData(data.data[0]);
+    }
+  }, [data]);
 
   return (
     <>
       <div className="tabs my-4">
-        {dates.map((date, index) => (
+        {data?.data?.slice(0, 4)?.map((date, index) => (
           <div
             key={index}
             className={`tab ${activeTab === index ? "active" : ""}`}
-            onClick={() => handleTabClick(index)}
+            onClick={() => handleTabClick({ index, date })}
           >
-            {date}
+            {date.datetime}
           </div>
         ))}
       </div>
+
       <div className="tab-content">
         <Suspense fallback={<div>Loading...</div>}>
-          {activeTab === 0 && (
-            <div>
-              <DataCard data={data} />
-            </div>
-          )}
-          {activeTab === 1 && (
-            <div>
-              <DataCard data={data} />
-            </div>
-          )}
-          {activeTab === 2 && (
-            <div>
-              <DataCard data={data} />
-            </div>
-          )}
-          {activeTab === 3 && (
-            <div>
-              <DataCard data={data} />
-            </div>
-          )}
+          {activeTab === 0 && <DataCard data={weatherData} />}
+          {activeTab === 1 && <DataCard data={weatherData} />}
+          {activeTab === 2 && <DataCard data={weatherData} />}
+          {activeTab === 3 && <DataCard data={weatherData} />}
         </Suspense>
       </div>
     </>

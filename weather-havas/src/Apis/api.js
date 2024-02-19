@@ -4,6 +4,8 @@ const apiURL = "https://api.weatherbit.io/v2.0/forecast/daily";
 const token = "aa7c69fc0662465b9a53a74b2996b03a";
 
 export const fetchCurrentOrGivenLocationData = (cityName) => {
+
+  console.log(cityName,"cilynme")
   if (cityName) {
     return axios.get(`${apiURL}?city=${cityName}&key=${token}`);
   } else {

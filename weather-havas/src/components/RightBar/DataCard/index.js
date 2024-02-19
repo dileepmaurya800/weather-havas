@@ -1,17 +1,17 @@
 import React from "react";
 import "./style.css";
 
-const DataCard = () => {
-  // Define an array of card data objects
+const DataCard = ({data}) => {
+
   const cardsData = [
-    { id: 1, content: "Wind", title: "6 mph" },
-    { id: 2, content: "Humidity", title: "69%" },
-    { id: 3, content: "Real feel", title: "4°c" },
-    { id: 4, content: "UV Index", title: "3" },
-    { id: 5, content: "Pressure", title: "1000mb" },
-    { id: 6, content: "Chance of rain", title: "92%" },
-    { id: 7, content: "Sun", title: "Content 7" },
-    { id: 8, content: "Moon", title: "Content 8" }
+    { id: 1, lower_content: `${data?.wind_cdir_full}`, upper_content: "Wind", title: `${data?.wind_spd} mph` },
+    { id: 2, lower_content: "", upper_content: "Humidity", title: `${data?.rh}%` },
+    { id: 3, lower_content: "", upper_content: "Real feel", title: `${data?.app_max_temp}°c` },
+    { id: 4, lower_content: "Moderate", upper_content: "UV Index", title: `${data?.uv}` },
+    { id: 5, lower_content: "", upper_content: "Pressure", title: `${data?.pres}mb` },
+    { id: 6, lower_content: "", upper_content: "Chance of rain", title: `${data?.pop}%` },
+    { id: 7, lower_content: "Wind", upper_content: "Sun", title: "Content 7" },
+    { id: 8, lower_content: "Wind", upper_content: "Moon", title: "Content 8" }
   ];
   
 
@@ -22,9 +22,9 @@ const DataCard = () => {
           <div className="col-md-4 mb-4" key={card.id}>
             <div className="card text-start">
               <div className="card-body">
-                <p className="card-text">{card.content}</p>
+                <p className="card-text">{card.upper_content}</p>
                 <h5 className="card-title">{card.title}</h5>
-                <p className="card-text">{card.content}</p>
+                <p className="card-text">{card.lower_content}</p>
               </div>
             </div>
           </div>

@@ -19,3 +19,33 @@
     font-size: 40px;
     font-weight: 400;
 }
+
+/* searchbar css */
+
+
+.search-box {
+    width: 497px;
+    height: 50px;
+    background: #efefef 0% 0% no-repeat padding-box;
+    border-radius: 25px;
+    opacity: 1;
+  }
+  .form-control{
+      background-color: #EFEFEF;
+      border: none;
+  }
+  .form-control:focus{
+      background-color: #EFEFEF;
+      border-color: #EFEFEF ;
+      box-shadow:none;
+  
+  }
+  .btn:hover{
+      background-color: #EFEFEF;
+      color: #003756;
+  }
+  .btn:active{
+      background-color: #EFEFEF;
+      color: #003756;
+  }
+  

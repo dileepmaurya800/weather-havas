@@ -7,12 +7,13 @@ import { fetchCurrentOrGivenLocationData } from "./Apis/api";
 function App() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  const [searchedCity, setSearchedCity] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const  data  = await fetchCurrentOrGivenLocationData();
+        const  data  = await fetchCurrentOrGivenLocationData(searchedCity);
         setLoading(false);
         setData(data);
       } catch (error) {
@@ -21,16 +22,17 @@ function App() {
     };
 
     fetchData();
-  }, []);
+  }, [searchedCity]);
 
-  console.log(data,"nnn")
+  console.log(searchedCity)
+
 
   return (
     <>
       <main>
         <div className="container-fluid ">
           <div className="row justify-content-md-center">
-            <LeftBar data={data} />
+            <LeftBar data={data} setSearchedCity={setSearchedCity} />
             <RightBar data={data} />
           </div>
         </div>
