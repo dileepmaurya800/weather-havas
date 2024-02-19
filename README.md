@@ -17,3 +17,8 @@ Usage
 Obtain an API key from OpenWeatherMap and replace YOUR_API_KEY in the config.js file.
 Start the development server: npm start
 Open your browser and go to http://localhost:3000 to view the app.
+
+or you can check this this domin 
+https://havas-weather.netlify.app/
+
+
